@@ -1,7 +1,10 @@
 SET(SRCS
     LandscapeMakerPluginInterface.cpp
     LandscapeMaker.cpp
+    ui/LandscapeMakerConfigDialog.cpp
 )
+
+INCLUDE_DIRECTORIES(ui)
 
 ADD_LIBRARY(LandscapeMaker MODULE ${SRCS})
 
