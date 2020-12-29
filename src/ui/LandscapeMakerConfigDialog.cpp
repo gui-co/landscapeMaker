@@ -3,12 +3,12 @@
 LandscapeMakerConfigDialog::LandscapeMakerConfigDialog(void)
 	: StelDialog("LandscapeMaker")
 {
-	/* Nothing to do */
+	ui = new Ui_LandscapeMakerConfigDialog();
 }
 
 LandscapeMakerConfigDialog::~LandscapeMakerConfigDialog(void)
 {
-	/* Nothing to do */
+	delete ui;
 }
 
 void LandscapeMakerConfigDialog::retranslate(void)
@@ -18,6 +18,6 @@ void LandscapeMakerConfigDialog::retranslate(void)
 
 void LandscapeMakerConfigDialog::createDialogContent(void)
 {
-	/* Nothing to do */
+	ui->setupUi(dialog);
 }
 
