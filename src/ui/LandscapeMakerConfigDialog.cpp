@@ -19,5 +19,6 @@ void LandscapeMakerConfigDialog::retranslate(void)
 void LandscapeMakerConfigDialog::createDialogContent(void)
 {
 	ui->setupUi(dialog);
+	connect(ui->closeStelWindow, SIGNAL(clicked()), this, SLOT(close()));
 }
 
