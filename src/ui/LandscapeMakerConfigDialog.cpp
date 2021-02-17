@@ -20,5 +20,12 @@ void LandscapeMakerConfigDialog::createDialogContent(void)
 {
 	ui->setupUi(dialog);
 	connect(ui->closeStelWindow, SIGNAL(clicked()), this, SLOT(close()));
+	connect(ui->changeLandscape, SIGNAL(clicked()),
+	        this, SIGNAL(changeLandscape()));
+}
+
+QString LandscapeMakerConfigDialog::getSelectedLandscape(void) const
+{
+	return "";
 }
 

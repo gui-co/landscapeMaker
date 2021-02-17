@@ -22,6 +22,9 @@ public:
 
 private:
 	LandscapeMakerConfigDialog *configDialog;
+
+private slots:
+	void onChangeLandscape(void);
 };
 
 #endif /* LANDSCAPE_MAKER */

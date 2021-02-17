@@ -4,6 +4,8 @@ LandscapeMaker::LandscapeMaker(void)
 {
 	setObjectName("LandscapeMaker");
 	configDialog = new LandscapeMakerConfigDialog();
+	connect(configDialog, SIGNAL(changeLandscape()),
+	        this, SLOT(onChangeLandscape()));
 }
 
 LandscapeMaker::~LandscapeMaker(void)
@@ -31,5 +33,11 @@ bool LandscapeMaker::configureGui(bool show)
 	if (show)
 		configDialog->setVisible(true);
 	return true;
+}
+
+void LandscapeMaker::onChangeLandscape(void)
+{
+	QString id = configDialog->getSelectedLandscape();
+	qDebug() << "New landscape: " << id;
 }
 
