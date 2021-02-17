@@ -1,5 +1,7 @@
 #include "LandscapeMaker.hpp"
 
+#include "StelApp.hpp"
+
 LandscapeMaker::LandscapeMaker(void)
 {
 	setObjectName("LandscapeMaker");
@@ -38,6 +40,7 @@ bool LandscapeMaker::configureGui(bool show)
 void LandscapeMaker::onChangeLandscape(void)
 {
 	QString id = configDialog->getSelectedLandscape();
-	qDebug() << "New landscape: " << id;
+	StelApp &app = StelApp::getInstance();
+	StelModule *lm = app.getModule("LandscapeMgr");
 }
 
