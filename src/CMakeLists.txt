@@ -2,6 +2,7 @@ SET(SRCS
     LandscapeMakerPluginInterface.cpp
     LandscapeMaker.cpp
     ui/LandscapeMakerConfigDialog.cpp
+    Landscape.cpp
 )
 
 INCLUDE_DIRECTORIES(ui)
