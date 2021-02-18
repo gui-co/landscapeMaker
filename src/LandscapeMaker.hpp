@@ -7,6 +7,7 @@
 #include "StelModule.hpp"
 
 #include <QString>
+#include <QDir>
 
 class LandscapeMaker: public StelModule
 {
@@ -22,6 +23,8 @@ public:
 
 private:
 	LandscapeMakerConfigDialog *configDialog;
+	QDir *landscapeDir;
+	void saveLandscape(void);
 
 private slots:
 	void onChangeLandscape(void);
