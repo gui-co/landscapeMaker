@@ -24,9 +24,8 @@ public:
 
 private:
 	LandscapeMakerConfigDialog *configDialog;
-	QDir *landscapeDir;
+	QDir landscapeDir;
 	Landscape *landscape;
-	void saveLandscape(void);
 
 private slots:
 	void onChangeLandscape(void);
