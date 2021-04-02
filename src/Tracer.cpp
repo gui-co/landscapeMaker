@@ -18,6 +18,13 @@ Tracer::Tracer(double observerLatitude, double observerLongitude,
 	            * sin(observerLongitude);
 	observerZ = (pow(WGS84_SEMI_MINOR_AXIS, 2) / pow(WGS84_SEMI_MAJOR_AXIS, 2)
 	            * n + observerElevation) * sin(observerLatitude);
+
+	int tileCornerLat = static_cast<int>(observerLatitude);
+	tileCornerLat = tileCornerLat - tileCornerLat % 5;
+	int tileCornerLon = static_cast<int>(observerLongitude);
+	tileCornerLon = tileCornerLon - tileCornerLon % 5;
+	tile = new Tile(tileCornerLat, tileCornerLon,
+	                observerX, observerY, observerZ);
 }
 
 Tracer::~Tracer(void)
