@@ -4,6 +4,7 @@ SET(SRCS
     ui/LandscapeMakerConfigDialog.cpp
     Landscape.cpp
     Tracer.cpp
+    Tile.cpp
 )
 
 INCLUDE_DIRECTORIES(ui)

@@ -8,6 +8,7 @@ const double Tracer::WGS84_EXCENTRICITY_SQUARED = 0.00669437999014;
 
 Tracer::Tracer(double observerLatitude, double observerLongitude,
                double observerElevation)
+	: tile(nullptr)
 {
 	double n = WGS84_SEMI_MAJOR_AXIS / (sqrt(1 - WGS84_EXCENTRICITY_SQUARED
 	           * pow(sin(observerLatitude), 2)));
@@ -21,6 +22,6 @@ Tracer::Tracer(double observerLatitude, double observerLongitude,
 
 Tracer::~Tracer(void)
 {
-	/* Nothing to do */
+	delete tile;
 }
 

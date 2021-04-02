@@ -17,6 +17,7 @@ private:
 	double observerX;
 	double observerY;
 	double observerZ;
+	Tile *tile;
 };
 
 #endif /* TRACER */
