@@ -12,13 +12,11 @@ LandscapeMaker::LandscapeMaker(void)
 	landscapeDir = QDir(userDir.filePath("landscapes"));
 	connect(configDialog, SIGNAL(changeLandscape()),
 	        this, SLOT(onChangeLandscape()));
-	landscape = new Landscape(2048, 1024);
 }
 
 LandscapeMaker::~LandscapeMaker(void)
 {
 	delete configDialog;
-	delete landscape;
 }
 
 void LandscapeMaker::init(void)
@@ -45,10 +43,9 @@ bool LandscapeMaker::configureGui(bool show)
 
 void LandscapeMaker::onChangeLandscape(void)
 {
-	QString id = configDialog->getSelectedLandscape();
-	StelApp &app = StelApp::getInstance();
-	StelModule *lm = app.getModule("LandscapeMgr");
-	landscape->save("artificialLandscape", landscapeDir);
-	lm->setProperty("currentLandscapeName", "artificialLandscape");
+	double latitude = configDialog->getLatitude();
+	double longitude = configDialog->getLongitude();
+	double elevation = configDialog->getElevation();
+	tracer = new Tracer(latitude, longitude, elevation);
 }
 

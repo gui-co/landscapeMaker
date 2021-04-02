@@ -2,7 +2,7 @@
 #define LANDSCAPE_MAKER_HPP
 
 #include "LandscapeMakerConfigDialog.hpp"
-#include "Landscape.hpp"
+#include "Tracer.hpp"
 
 #include "StelCore.hpp"
 #include "StelModule.hpp"
@@ -24,7 +24,7 @@ public:
 private:
 	LandscapeMakerConfigDialog *configDialog;
 	QDir landscapeDir;
-	Landscape *landscape;
+	Tracer *tracer;
 
 private slots:
 	void onChangeLandscape(void);
