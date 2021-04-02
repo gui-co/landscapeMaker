@@ -24,6 +24,23 @@ void LandscapeMakerConfigDialog::createDialogContent(void)
 	        this, SIGNAL(changeLandscape()));
 }
 
+double LandscapeMakerConfigDialog::getLatitude(void)
+{
+	QString value = ui->latitudeField->text();
+	return value.toDouble();
+}
+
+double LandscapeMakerConfigDialog::getLongitude(void)
+{
+	QString value = ui->longitudeField->text();
+	return value.toDouble();
+}
+
+double LandscapeMakerConfigDialog::getElevation(void)
+{
+	return ui->elevationField->value();
+}
+
 QString LandscapeMakerConfigDialog::getSelectedLandscape(void) const
 {
 	return "";

@@ -19,6 +19,9 @@ public:
 	~LandscapeMakerConfigDialog(void);
 	virtual void retranslate(void);
 	virtual void createDialogContent(void);
+	double getLatitude(void);
+	double getLongitude(void);
+	double getElevation(void);
 	QString getSelectedLandscape(void) const;
 
 private:
