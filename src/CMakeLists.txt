@@ -5,6 +5,7 @@ SET(SRCS
     Landscape.cpp
     Tracer.cpp
     Tile.cpp
+    Vector3d.cpp
 )
 
 INCLUDE_DIRECTORIES(ui)
