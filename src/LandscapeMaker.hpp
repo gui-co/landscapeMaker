@@ -7,7 +7,6 @@
 #include "StelCore.hpp"
 #include "StelModule.hpp"
 
-#include <QString>
 #include <QDir>
 
 class LandscapeMaker: public StelModule
