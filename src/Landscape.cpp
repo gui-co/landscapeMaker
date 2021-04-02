@@ -6,9 +6,11 @@
 #include <QFile>
 #include <QTextStream>
 
-Landscape::Landscape(void)
+Landscape::Landscape(int width, int height)
+	: landscapeWidth(width), landscapeHeight(height)
 {
-	/* Nothing to do */
+	landscapeDistances.resize(landscapeWidth * landscapeHeight);
+	landscapeDistances.fill(0.0);
 }
 
 Landscape::~Landscape(void)

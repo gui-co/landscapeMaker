@@ -12,7 +12,7 @@ LandscapeMaker::LandscapeMaker(void)
 	landscapeDir = QDir(userDir.filePath("landscapes"));
 	connect(configDialog, SIGNAL(changeLandscape()),
 	        this, SLOT(onChangeLandscape()));
-	landscape = new Landscape();
+	landscape = new Landscape(2048, 1024);
 }
 
 LandscapeMaker::~LandscapeMaker(void)
