@@ -1,6 +1,8 @@
 #ifndef TILE_HPP
 #define TILE_HPP
 
+#include <QString>
+
 class Tile
 {
 public:
@@ -13,6 +15,7 @@ private:
 	double observerX;
 	double observerY;
 	double observerZ;
+	QString filename;
 };
 
 #endif /* TILE */
