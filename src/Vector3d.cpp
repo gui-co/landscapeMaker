@@ -1,5 +1,11 @@
 #include "Vector3d.hpp"
 
+Vector3d::Vector3d(void)
+	: x(0.0), y(0.0), z(0.0)
+{
+	/* Nothing to do */
+}
+
 Vector3d::Vector3d(double x, double y, double z)
 	: x(x), y(y), z(z)
 {

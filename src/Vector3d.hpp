@@ -4,6 +4,7 @@
 class Vector3d
 {
 public:
+	Vector3d(void);
 	Vector3d(double x, double y, double z);
 	double getX(void) const;
 	double getY(void) const;
