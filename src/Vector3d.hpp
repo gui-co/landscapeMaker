@@ -6,6 +6,7 @@ class Vector3d
 public:
 	Vector3d(void);
 	Vector3d(double x, double y, double z);
+	Vector3d operator-(const Vector3d &rhs) const;
 	double getX(void) const;
 	double getY(void) const;
 	double getZ(void) const;
