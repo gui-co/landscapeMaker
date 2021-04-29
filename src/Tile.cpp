@@ -40,15 +40,7 @@ void Tile::loadFile(void)
 			double lat = cornerLatitude + (j / 6000) * 3 / 3600;
 			double lon = cornerLongitude + (j % 6000) * 3 / 3600;
 			double alt = lineBuffer[j];
-			double n = Tracer::WGS84_SEMI_MAJOR_AXIS
-			           / sqrt(1 - Tracer::WGS84_EXCENTRICITY_SQUARED
-			           * pow(sin(lat), 2));
-			data.append(
-			    Vector3d((n + alt) * cos(lat) * cos(lon),
-			             (n + alt) * cos(lat) * sin(lon),
-			             ((pow(Tracer::WGS84_SEMI_MINOR_AXIS, 2)
-			              / pow(Tracer::WGS84_SEMI_MAJOR_AXIS, 2)) * n + h)
-			              * sin(lat)));
+			data.append(tracer.geodeticToEnu(lat, lon, alt));
 		}
 	}
 	delete lineBuffer;
