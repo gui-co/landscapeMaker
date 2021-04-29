@@ -9,10 +9,9 @@
 #include <cstdint>
 #include <cmath>
 
-Tile::Tile(double cornerLatitude, double cornerLongitude,
-           double observerX, double observerY, double observerZ)
+Tile::Tile(double cornerLatitude, double cornerLongitude, const Tracer &tracer)
 	: cornerLatitude(cornerLatitude), cornerLongitude(cornerLongitude),
-	  observerX(observerX), observerY(observerY), observerZ(observerZ)
+	  tracer(tracer)
 {
 	// filename for srtm.csi.cgiar.org data
 	int nLon = cornerLongitude / 5 + 37;

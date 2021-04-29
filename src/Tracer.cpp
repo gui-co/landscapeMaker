@@ -23,8 +23,7 @@ Tracer::Tracer(double observerLatitude, double observerLongitude,
 	tileCornerLat = tileCornerLat - tileCornerLat % 5;
 	int tileCornerLon = static_cast<int>(observerLongitude);
 	tileCornerLon = tileCornerLon - tileCornerLon % 5;
-	tile = new Tile(tileCornerLat, tileCornerLon,
-	                observerX, observerY, observerZ);
+	tile = new Tile(tileCornerLat, tileCornerLon, *this);
 }
 
 Tracer::~Tracer(void)

@@ -6,18 +6,17 @@
 #include <QString>
 #include <QVector>
 
+class Tracer;
+
 class Tile
 {
 public:
-	Tile(double cornerLat, double cornerLon,
-	     double observerX, double observerY, double observerZ);
+	Tile(double cornerLat, double cornerLon, const Tracer &tracer);
 
 private:
 	double cornerLatitude;
 	double cornerLongitude;
-	double observerX;
-	double observerY;
-	double observerZ;
+	const Tracer &tracer;
 	QString filename;
 	QVector<Vector3d> data;
 	void loadFile(void);
