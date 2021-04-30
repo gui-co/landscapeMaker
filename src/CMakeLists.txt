@@ -6,6 +6,7 @@ SET(SRCS
     Tracer.cpp
     Tile.cpp
     Vector3d.cpp
+    BoundingBox.cpp
 )
 
 INCLUDE_DIRECTORIES(ui)
