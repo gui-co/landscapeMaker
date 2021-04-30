@@ -17,6 +17,34 @@ Tile::Tile(double cornerLatitude, double cornerLongitude, const Tracer &tracer)
 	int nLon = cornerLongitude / 5 + 37;
 	int nLat = -cornerLatitude / 5 + 12;
 	filename = QString("srtm_%1_%2.tif").arg(nLon).arg(nLat);
+
+	// large bounding box
+	QVector<Vector3d> corners;
+	corners.push_back(tracer.geodeticToEnu(cornerLatitude,
+	                                       cornerLongitude,
+	                                       0));
+	corners.push_back(tracer.geodeticToEnu(cornerLatitude,
+	                                       cornerLongitude,
+	                                       10000));
+	corners.push_back(tracer.geodeticToEnu(cornerLatitude,
+	                                       cornerLongitude + 5.0,
+	                                       0));
+	corners.push_back(tracer.geodeticToEnu(cornerLatitude,
+	                                       cornerLongitude + 5.0,
+	                                       10000));
+	corners.push_back(tracer.geodeticToEnu(cornerLatitude + 5.0,
+	                                       cornerLongitude,
+	                                       0));
+	corners.push_back(tracer.geodeticToEnu(cornerLatitude + 5.0,
+	                                       cornerLongitude,
+	                                       10000));
+	corners.push_back(tracer.geodeticToEnu(cornerLatitude + 5.0,
+	                                       cornerLongitude + 5.0,
+	                                       0));
+	corners.push_back(tracer.geodeticToEnu(cornerLatitude + 5.0,
+	                                       cornerLongitude + 5.0,
+	                                       10000));
+	largeBoundingBox = BoundingBox(corners);
 }
 
 void Tile::loadFile(void)

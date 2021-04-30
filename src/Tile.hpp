@@ -2,6 +2,7 @@
 #define TILE_HPP
 
 #include "Vector3d.hpp"
+#include "BoundingBox.hpp"
 
 #include <QString>
 #include <QVector>
@@ -19,6 +20,7 @@ private:
 	const Tracer &tracer;
 	QString filename;
 	QVector<Vector3d> data;
+	BoundingBox largeBoundingBox;
 	void loadFile(void);
 };
 
