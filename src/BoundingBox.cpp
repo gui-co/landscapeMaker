@@ -18,9 +18,9 @@ BoundingBox::BoundingBox(const QVector<Vector3d> &points)
 	double xMin = std::numeric_limits<double>::infinity();
 	double yMin = std::numeric_limits<double>::infinity();
 	double zMin = std::numeric_limits<double>::infinity();
-	double xMax = std::numeric_limits<double>::infinity();
-	double yMax = std::numeric_limits<double>::infinity();
-	double zMax = std::numeric_limits<double>::infinity();
+	double xMax = -std::numeric_limits<double>::infinity();
+	double yMax = -std::numeric_limits<double>::infinity();
+	double zMax = -std::numeric_limits<double>::infinity();
 
 	for (auto point: points)
 	{
