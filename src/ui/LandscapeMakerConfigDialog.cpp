@@ -26,14 +26,12 @@ void LandscapeMakerConfigDialog::createDialogContent(void)
 
 double LandscapeMakerConfigDialog::getLatitude(void)
 {
-	QString value = ui->latitudeField->text();
-	return value.toDouble();
+	return ui->latitudeField->valueDegrees();
 }
 
 double LandscapeMakerConfigDialog::getLongitude(void)
 {
-	QString value = ui->longitudeField->text();
-	return value.toDouble();
+	return ui->longitudeField->valueDegrees();
 }
 
 double LandscapeMakerConfigDialog::getElevation(void)
