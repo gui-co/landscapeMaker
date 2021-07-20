@@ -7,6 +7,7 @@ SET(SRCS
     Tile.cpp
     Vector3d.cpp
     BoundingBox.cpp
+    TileLoader.cpp
 )
 
 INCLUDE_DIRECTORIES(ui)
