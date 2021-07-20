@@ -9,7 +9,8 @@
 class Tracer
 {
 public:
-	Tracer(double, double, double);
+	Tracer(double observerLatitude, double observerLongitude,
+	       double observerElevation);
 	Vector3d geodeticToEcef(double latitude, double longitude,
 	                        double elevation) const;
 	Vector3d ecefToEnu(const Vector3d &ecef) const;
