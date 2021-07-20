@@ -4,7 +4,6 @@
 #include "Vector3d.hpp"
 #include "BoundingBox.hpp"
 
-#include <QString>
 #include <QVector>
 
 class Tracer;
@@ -18,10 +17,8 @@ private:
 	double cornerLatitude;
 	double cornerLongitude;
 	const Tracer &tracer;
-	QString filename;
 	QVector<Vector3d> data;
 	BoundingBox largeBoundingBox;
-	void loadFile(void);
 	Tile *north;
 	Tile *south;
 	Tile *east;

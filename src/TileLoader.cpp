@@ -1,6 +1,11 @@
 #include "TileLoader.hpp"
 
+#include <QByteArray>
+
+#include <tiffio.h>
+
 #include <cmath>
+#include <vector>
 
 const double TileLoader::WGS84_SEMI_MAJOR_AXIS = 6378137.0;
 const double TileLoader::WGS84_SEMI_MINOR_AXIS = 6356752.3142;
@@ -47,5 +52,36 @@ Vector3d TileLoader::geodeticToEnu(double latitude, double longitude,
                                double elevation) const
 {
 	return ecefToEnu(geodeticToEcef(latitude, longitude, elevation));
+}
+
+void TileLoader::loadGeoTiff(const QString &filePath) const
+{
+	double cornerLatitude = 0;
+	double cornerLongitude = 0;
+	QByteArray filePathUtf8 = filePath.toUtf8();
+	TIFF* tif = TIFFOpen(filePathUtf8.constData(), "r");
+	if (!tif)
+		return;
+	uint32_t w, h, l;
+	TIFFGetField(tif, TIFFTAG_IMAGEWIDTH, &w);
+	TIFFGetField(tif, TIFFTAG_IMAGELENGTH, &h);
+	TIFFGetField(tif, TIFFTAG_IMAGELENGTH, &l);
+
+	std::vector<Vector3d> data(6000 * 6000);
+	int16_t *lineBuffer;
+	lineBuffer = new int16_t[6000];
+	for (int i = 0 ; i < 6000 ; i++)
+	{
+		TIFFReadScanline(tif, lineBuffer, i);
+		for (int j = 0; j < 6000; j++)
+		{
+			double lat = cornerLatitude + (j / 6000) * 3 / 3600;
+			double lon = cornerLongitude + (j % 6000) * 3 / 3600;
+			double alt = lineBuffer[j];
+			data[i * j] = geodeticToEnu(lat, lon, alt);
+		}
+	}
+	delete lineBuffer;
+	TIFFClose(tif);
 }
 
