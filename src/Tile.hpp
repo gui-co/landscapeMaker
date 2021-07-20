@@ -6,17 +6,14 @@
 
 #include <QVector>
 
-class Tracer;
-
 class Tile
 {
 public:
-	Tile(double cornerLat, double cornerLon, const Tracer &tracer);
+	Tile(double cornerLat, double cornerLon);
 
 private:
 	double cornerLatitude;
 	double cornerLongitude;
-	const Tracer &tracer;
 	QVector<Vector3d> data;
 	BoundingBox largeBoundingBox;
 	Tile *north;

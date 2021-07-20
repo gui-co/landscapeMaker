@@ -1,8 +1,7 @@
 #include "Tile.hpp"
 
-Tile::Tile(double cornerLatitude, double cornerLongitude, const Tracer &tracer)
-	: cornerLatitude(cornerLatitude), cornerLongitude(cornerLongitude),
-	  tracer(tracer)
+Tile::Tile(double cornerLatitude, double cornerLongitude)
+	: cornerLatitude(cornerLatitude), cornerLongitude(cornerLongitude)
 {
 	/* Nothing to do */
 }
