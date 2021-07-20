@@ -9,21 +9,10 @@ const double Tracer::WGS84_EXCENTRICITY_SQUARED = 0.00669437999014;
 Tracer::Tracer(double observerLatitude, double observerLongitude,
                double observerElevation)
 	: latitude(observerLatitude), longitude(observerLongitude),
-	  elevation(observerElevation), tile(nullptr)
+	  elevation(observerElevation)
 {
 	ecefObserver = geodeticToEcef(observerLatitude, observerLongitude,
 	                              observerElevation);
-
-	int tileCornerLat = static_cast<int>(latitude);
-	tileCornerLat = tileCornerLat - tileCornerLat % 5;
-	int tileCornerLon = static_cast<int>(longitude);
-	tileCornerLon = tileCornerLon - tileCornerLon % 5;
-	tile = new Tile(tileCornerLat, tileCornerLon, *this);
-}
-
-Tracer::~Tracer(void)
-{
-	delete tile;
 }
 
 Vector3d Tracer::geodeticToEcef(double latitude, double longitude,

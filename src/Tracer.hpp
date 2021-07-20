@@ -4,11 +4,12 @@
 #include "Tile.hpp"
 #include "Vector3d.hpp"
 
+#include <list>
+
 class Tracer
 {
 public:
 	Tracer(double, double, double);
-	~Tracer(void);
 	Vector3d geodeticToEcef(double latitude, double longitude,
 	                        double elevation) const;
 	Vector3d ecefToEnu(const Vector3d &ecef) const;
@@ -23,7 +24,7 @@ private:
 	double longitude;
 	double elevation;
 	Vector3d ecefObserver;
-	Tile *tile;
+	std::list<Tile> tiles;
 };
 
 #endif /* TRACER */
