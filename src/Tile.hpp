@@ -22,6 +22,10 @@ private:
 	QVector<Vector3d> data;
 	BoundingBox largeBoundingBox;
 	void loadFile(void);
+	Tile *north;
+	Tile *south;
+	Tile *east;
+	Tile *west;
 };
 
 #endif /* TILE */
