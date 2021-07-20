@@ -8,7 +8,8 @@ const double Tracer::WGS84_EXCENTRICITY_SQUARED = 0.00669437999014;
 
 Tracer::Tracer(double observerLatitude, double observerLongitude,
                double observerElevation)
-	: latitude(observerLatitude), longitude(observerLongitude),
+	: loader(observerLatitude, observerLongitude, observerElevation),
+	  latitude(observerLatitude), longitude(observerLongitude),
 	  elevation(observerElevation)
 {
 	ecefObserver = geodeticToEcef(observerLatitude, observerLongitude,

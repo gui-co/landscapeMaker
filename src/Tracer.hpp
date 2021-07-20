@@ -3,6 +3,7 @@
 
 #include "Tile.hpp"
 #include "Vector3d.hpp"
+#include "TileLoader.hpp"
 
 #include <list>
 
@@ -24,6 +25,7 @@ private:
 	double latitude;
 	double longitude;
 	double elevation;
+	TileLoader loader;
 	Vector3d ecefObserver;
 	std::list<Tile> tiles;
 };
