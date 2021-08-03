@@ -4,6 +4,7 @@
 #include "Vector3d.hpp"
 
 #include <QString>
+#include <QVector>
 
 class TileLoader
 {
@@ -23,7 +24,7 @@ private:
 	Vector3d ecefToEnu(const Vector3d &) const;
 	Vector3d geodeticToEnu(double latitude, double longitude,
 	                       double elevation) const;
-	void loadGeoTiff(const QString &filePath) const;
+	QVector<Vector3d> loadGeoTiff(const QString &filePath) const;
 };
 
 #endif /* TILE_LOADER */

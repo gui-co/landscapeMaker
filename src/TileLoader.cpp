@@ -5,7 +5,6 @@
 #include <tiffio.h>
 
 #include <cmath>
-#include <vector>
 
 const double TileLoader::WGS84_SEMI_MAJOR_AXIS = 6378137.0;
 const double TileLoader::WGS84_SEMI_MINOR_AXIS = 6356752.3142;
@@ -54,20 +53,22 @@ Vector3d TileLoader::geodeticToEnu(double latitude, double longitude,
 	return ecefToEnu(geodeticToEcef(latitude, longitude, elevation));
 }
 
-void TileLoader::loadGeoTiff(const QString &filePath) const
+QVector<Vector3d> TileLoader::loadGeoTiff(const QString &filePath) const
 {
 	double cornerLatitude = 0;
 	double cornerLongitude = 0;
+	QVector<Vector3d> data(6000 * 6000);
 	QByteArray filePathUtf8 = filePath.toUtf8();
 	TIFF* tif = TIFFOpen(filePathUtf8.constData(), "r");
-	if (!tif)
-		return;
+	if (!tif) {
+		data.resize(0);
+		return data;
+	}
 	uint32_t w, h, l;
 	TIFFGetField(tif, TIFFTAG_IMAGEWIDTH, &w);
 	TIFFGetField(tif, TIFFTAG_IMAGELENGTH, &h);
 	TIFFGetField(tif, TIFFTAG_IMAGELENGTH, &l);
 
-	std::vector<Vector3d> data(6000 * 6000);
 	int16_t *lineBuffer;
 	lineBuffer = new int16_t[6000];
 	for (int i = 0 ; i < 6000 ; i++)
@@ -83,5 +84,6 @@ void TileLoader::loadGeoTiff(const QString &filePath) const
 	}
 	delete lineBuffer;
 	TIFFClose(tif);
+	return data;
 }
 
