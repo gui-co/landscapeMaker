@@ -6,3 +6,8 @@ Tile::Tile(double cornerLatitude, double cornerLongitude)
 	/* Nothing to do */
 }
 
+void Tile::fill(QVector<Vector3d> &&elevationData)
+{
+	data = elevationData;
+}
+

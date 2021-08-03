@@ -10,6 +10,7 @@ class Tile
 {
 public:
 	Tile(double cornerLat, double cornerLon);
+	void fill(QVector<Vector3d> &&elevationData);
 
 private:
 	double cornerLatitude;
