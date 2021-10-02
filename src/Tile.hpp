@@ -9,12 +9,15 @@
 class Tile
 {
 public:
-	Tile(double cornerLat, double cornerLon);
+	Tile(int southWestLat, int southWestLon, int northEastLat,
+	     int northEastLon);
 	void fill(QVector<Vector3d> &&elevationData);
 
 private:
-	double cornerLatitude;
-	double cornerLongitude;
+	int southWestLat;
+	int southWestLon;
+	int northEastLat;
+	int northEastLon;
 	QVector<Vector3d> data;
 	BoundingBox largeBoundingBox;
 	Tile *north;
