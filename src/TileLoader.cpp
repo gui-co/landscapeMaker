@@ -9,6 +9,8 @@
 const double TileLoader::WGS84_SEMI_MAJOR_AXIS = 6378137.0;
 const double TileLoader::WGS84_SEMI_MINOR_AXIS = 6356752.3142;
 const double TileLoader::WGS84_EXCENTRICITY_SQUARED = 0.00669437999014;
+const int TileLoader::TILE_SIZE = 5 * 3600;
+const int TileLoader::TILE_RESOLUTION = 3;
 
 TileLoader::TileLoader(double observerLatitude, double observerLongitude,
                        double observerElevation)

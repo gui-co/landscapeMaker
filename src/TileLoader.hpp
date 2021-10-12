@@ -15,6 +15,8 @@ private:
 	static const double WGS84_SEMI_MAJOR_AXIS;
 	static const double WGS84_SEMI_MINOR_AXIS;
 	static const double WGS84_EXCENTRICITY_SQUARED;
+	static const int TILE_SIZE;
+	static const int TILE_RESOLUTION;
 	double observerLatitude;
 	double observerLongitude;
 	double observerElevation;
