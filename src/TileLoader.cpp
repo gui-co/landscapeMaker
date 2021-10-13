@@ -11,11 +11,31 @@ const double TileLoader::WGS84_SEMI_MINOR_AXIS = 6356752.3142;
 const double TileLoader::WGS84_EXCENTRICITY_SQUARED = 0.00669437999014;
 const int TileLoader::TILE_SIZE = 5 * 3600;
 const int TileLoader::TILE_RESOLUTION = 3;
+const QString TileLoader::SRTM_BASE_NAME = "srtm_%1_%2.tif";
 
 TileLoader::TileLoader(double observerLatitude, double observerLongitude,
                        double observerElevation)
 {
-	/* Nothing to do */
+	QStringList filenames;
+	int size = 5;
+	int lat = (int) observerLatitude + size;
+	while (lat >= (int) observerLatitude - size)
+	{
+		int n_lat = (60 - lat) / 5 + 1;
+		int lon = (int) observerLongitude - size;
+		while (lon <= (int) observerLongitude + size)
+		{
+			int n_lon = (180 + lon) / 5 + 1;
+			filenames << SRTM_BASE_NAME.arg(n_lat, n_lon);
+			lon = lon + 5;
+		}
+		lat = lat - 5;
+	}
+}
+
+QStringList TileLoader::getFilenames(void)
+{
+	return filenames;
 }
 
 Vector3d TileLoader::geodeticToEcef(double latitude, double longitude,
