@@ -75,11 +75,11 @@ Vector3d TileLoader::geodeticToEnu(double latitude, double longitude,
 	return ecefToEnu(geodeticToEcef(latitude, longitude, elevation));
 }
 
-QVector<Vector3d> TileLoader::loadGeoTiff(const QString &filePath) const
+QVector<uint16_t> TileLoader::loadGeoTiff(const QString &filePath) const
 {
 	double cornerLatitude = 0;
 	double cornerLongitude = 0;
-	QVector<Vector3d> data(6000 * 6000);
+	QVector<uint16_t> data(6000 * 6000);
 	QByteArray filePathUtf8 = filePath.toUtf8();
 	TIFF* tif = TIFFOpen(filePathUtf8.constData(), "r");
 	if (!tif) {
@@ -91,20 +91,8 @@ QVector<Vector3d> TileLoader::loadGeoTiff(const QString &filePath) const
 	TIFFGetField(tif, TIFFTAG_IMAGELENGTH, &h);
 	TIFFGetField(tif, TIFFTAG_IMAGELENGTH, &l);
 
-	int16_t *lineBuffer;
-	lineBuffer = new int16_t[6000];
 	for (int i = 0 ; i < 6000 ; i++)
-	{
-		TIFFReadScanline(tif, lineBuffer, i);
-		for (int j = 0; j < 6000; j++)
-		{
-			double lat = cornerLatitude + (j / 6000) * 3 / 3600;
-			double lon = cornerLongitude + (j % 6000) * 3 / 3600;
-			double alt = lineBuffer[j];
-			data[i * j] = geodeticToEnu(lat, lon, alt);
-		}
-	}
-	delete lineBuffer;
+		TIFFReadScanline(tif, &data[i * 6000], i);
 	TIFFClose(tif);
 	return data;
 }
