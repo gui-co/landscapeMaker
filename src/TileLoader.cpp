@@ -70,7 +70,7 @@ Vector3d TileLoader::ecefToEnu(const Vector3d &ecef) const
 }
 
 Vector3d TileLoader::geodeticToEnu(double latitude, double longitude,
-                               double elevation) const
+                                   double elevation) const
 {
 	return ecefToEnu(geodeticToEcef(latitude, longitude, elevation));
 }
