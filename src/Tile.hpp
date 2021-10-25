@@ -6,15 +6,15 @@
 class Tile
 {
 public:
-	Tile(int southWestLat, int southWestLon, int northEastLat,
-	     int northEastLon);
+	Tile(int northWestLatitude, int northWestLongitude,
+	     int southEastLatitude, int southEastLongitude);
 	void fill(QVector<uint16_t> &&elevationData);
 
 private:
-	int southWestLat;
-	int southWestLon;
-	int northEastLat;
-	int northEastLon;
+	int northWestLatitude;
+	int northWestLongitude;
+	int southEastLatitude;
+	int southEastLongitude;
 	QVector<uint16_t> data;
 };
 
