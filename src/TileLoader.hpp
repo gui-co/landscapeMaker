@@ -31,7 +31,7 @@ private:
 	Vector3d ecefToEnu(const Vector3d &) const;
 	Vector3d geodeticToEnu(double latitude, double longitude,
 	                       double elevation) const;
-	Tile loadGeoTiff(const QString &filePath) const;
+	int loadGeoTiff(Tile &tile, const QString &filePath) const;
 };
 
 #endif /* TILE_LOADER */

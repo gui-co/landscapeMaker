@@ -75,15 +75,13 @@ Vector3d TileLoader::geodeticToEnu(double latitude, double longitude,
 	return ecefToEnu(geodeticToEcef(latitude, longitude, elevation));
 }
 
-Tile TileLoader::loadGeoTiff(const QString &filePath) const
+int TileLoader::loadGeoTiff(Tile &tile, const QString &filePath) const
 {
 	QVector<uint16_t> data(6000 * 6000);
 	QByteArray filePathUtf8 = filePath.toUtf8();
 	TIFF* tif = TIFFOpen(filePathUtf8.constData(), "r");
-	if (!tif) {
-		data.resize(0);
-		return Tile(0, 0, 0, 0);
-	}
+	if (!tif)
+		return 1;
 	uint32_t w, h, l;
 	TIFFGetField(tif, TIFFTAG_IMAGEWIDTH, &w);
 	TIFFGetField(tif, TIFFTAG_IMAGELENGTH, &h);
@@ -92,8 +90,7 @@ Tile TileLoader::loadGeoTiff(const QString &filePath) const
 	for (int i = 0 ; i < 6000 ; i++)
 		TIFFReadScanline(tif, &data[i * 6000], i);
 	TIFFClose(tif);
-	Tile tile(0, 0, 0, 0);
 	tile.fill(std::move(data));
-	return tile;
+	return 0;
 }
 
