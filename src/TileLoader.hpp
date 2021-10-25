@@ -2,6 +2,7 @@
 #define TILE_LOADER_HPP
 
 #include "Vector3d.hpp"
+#include "Tile.hpp"
 
 #include <QString>
 #include <QStringList>
@@ -30,7 +31,7 @@ private:
 	Vector3d ecefToEnu(const Vector3d &) const;
 	Vector3d geodeticToEnu(double latitude, double longitude,
 	                       double elevation) const;
-	QVector<uint16_t> loadGeoTiff(const QString &filePath) const;
+	Tile loadGeoTiff(const QString &filePath) const;
 };
 
 #endif /* TILE_LOADER */
