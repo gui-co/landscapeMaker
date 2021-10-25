@@ -77,7 +77,8 @@ Vector3d TileLoader::geodeticToEnu(double latitude, double longitude,
 
 int TileLoader::loadGeoTiff(Tile &tile, const QString &filePath) const
 {
-	QVector<uint16_t> data(6000 * 6000);
+	size_t tileDim = TILE_SIZE / TILE_RESOLUTION;
+	QVector<uint16_t> data(tileDim * tileDim);
 	QByteArray filePathUtf8 = filePath.toUtf8();
 	TIFF* tif = TIFFOpen(filePathUtf8.constData(), "r");
 	if (!tif)
@@ -87,8 +88,8 @@ int TileLoader::loadGeoTiff(Tile &tile, const QString &filePath) const
 	TIFFGetField(tif, TIFFTAG_IMAGELENGTH, &h);
 	TIFFGetField(tif, TIFFTAG_IMAGELENGTH, &l);
 
-	for (int i = 0 ; i < 6000 ; i++)
-		TIFFReadScanline(tif, &data[i * 6000], i);
+	for (int i = 0 ; i < tileDim ; i++)
+		TIFFReadScanline(tif, &data[i * tileDim], i);
 	TIFFClose(tif);
 	tile.fill(std::move(data));
 	return 0;
