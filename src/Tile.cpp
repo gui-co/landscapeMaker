@@ -8,7 +8,7 @@ Tile::Tile(int southWestLat, int southWestLon,
 	/* Nothing to do */
 }
 
-void Tile::fill(QVector<Vector3d> &&elevationData)
+void Tile::fill(QVector<uint16_t> &&elevationData)
 {
 	data = elevationData;
 }
