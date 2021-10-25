@@ -77,8 +77,6 @@ Vector3d TileLoader::geodeticToEnu(double latitude, double longitude,
 
 Tile TileLoader::loadGeoTiff(const QString &filePath) const
 {
-	double cornerLatitude = 0;
-	double cornerLongitude = 0;
 	QVector<uint16_t> data(6000 * 6000);
 	QByteArray filePathUtf8 = filePath.toUtf8();
 	TIFF* tif = TIFFOpen(filePathUtf8.constData(), "r");
