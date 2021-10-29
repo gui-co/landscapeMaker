@@ -91,7 +91,7 @@ int TileLoader::loadGeoTiff(Tile &tile, const QString &filePath) const
 	for (int i = 0 ; i < tileDim ; i++)
 		TIFFReadScanline(tif, &data[i * tileDim], i);
 	TIFFClose(tif);
-	tile.fill(std::move(data));
+	tile.fill(std::move(data), tileDim, tileDim);
 	return 0;
 }
 
