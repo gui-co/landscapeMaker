@@ -16,7 +16,6 @@ const QString TileLoader::SRTM_BASE_NAME = "srtm_%1_%2.tif";
 TileLoader::TileLoader(double observerLatitude, double observerLongitude,
                        double observerElevation)
 {
-	QStringList filenames;
 	int size = 5;
 	int lat = (int) observerLatitude + size;
 	while (lat >= (int) observerLatitude - size)
