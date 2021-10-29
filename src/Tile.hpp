@@ -10,6 +10,8 @@ public:
 	     int southEastLatitude, int southEastLongitude);
 	void fill(QVector<uint16_t> elevationData,
 	          size_t width, size_t height);
+	size_t getNbLongitudePoints(void);
+	size_t getNbLatitudePoints(void);
 
 private:
 	int northWestLatitude;

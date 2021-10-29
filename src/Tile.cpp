@@ -19,3 +19,13 @@ void Tile::fill(QVector<uint16_t> elevationData,
 	nbLatitudePoints = height;
 }
 
+size_t Tile::getNbLongitudePoints(void)
+{
+	return nbLongitudePoints;
+}
+
+size_t Tile::getNbLatitudePoints(void)
+{
+	return nbLatitudePoints;
+}
+
