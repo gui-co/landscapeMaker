@@ -12,6 +12,6 @@ Tile::Tile(int northWestLatitude, int northWestLongitude,
 
 void Tile::fill(QVector<uint16_t> &&elevationData)
 {
-	data = elevationData;
+	data = std::move(elevationData);
 }
 
