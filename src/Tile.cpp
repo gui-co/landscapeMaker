@@ -33,3 +33,18 @@ size_t Tile::getNbLatitudePoints(void)
 	return nbLatitudePoints;
 }
 
+double Tile::getLatitude(size_t latIndex)
+{
+	return northWestLatitude - latIndex * latitudeResolution;
+}
+
+double Tile::getLongitude(size_t lonIndex)
+{
+	return northWestLongitude + lonIndex * longitudeResolution;
+}
+
+uint16_t Tile::getElevation(size_t latIndex, size_t lonIndex)
+{
+	return data[lonIndex + latIndex * nbLongitudePoints];
+}
+
