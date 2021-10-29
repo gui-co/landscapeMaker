@@ -17,6 +17,10 @@ void Tile::fill(QVector<uint16_t> elevationData,
 	data = std::move(elevationData);
 	nbLongitudePoints = width;
 	nbLatitudePoints = height;
+	latitudeResolution = (northWestLatitude - southEastLatitude)
+	                     / nbLatitudePoints;
+	longitudeResolution = (southEastLongitude - northWestLongitude)
+	                      / nbLongitudePoints;
 }
 
 size_t Tile::getNbLongitudePoints(void)

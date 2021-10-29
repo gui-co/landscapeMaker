@@ -20,6 +20,8 @@ private:
 	int southEastLongitude;
 	size_t nbLongitudePoints;
 	size_t nbLatitudePoints;
+	int latitudeResolution;
+	int longitudeResolution;
 	QVector<uint16_t> data;
 };
 
